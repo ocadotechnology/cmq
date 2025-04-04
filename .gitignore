@@ -1,0 +1,20 @@
+__pycache__
+dist
+.vscode
+.venv
+.mypy_cache
+.ruff_cache
+.pytest_cache
+poetry.lock
+.coverage*
+coverage*
+*.DS_Store
+.csv
+.json
+
+# Gitlab
+.gitlab*
+
+# Docs
+docs
+mkdocs.yml
