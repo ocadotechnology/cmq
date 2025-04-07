@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.1.3 (2025-04-07)
+
+### Bug Fixes
+
+- Added release environment
+  ([`60e6e55`](https://github.com/ocadotechnology/cmq/commit/60e6e55885f51bc785998b87c76e3a517b8522dc))
+
+
 ## v0.1.2 (2025-04-07)
 
 ### Bug Fixes
