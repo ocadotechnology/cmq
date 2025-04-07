@@ -100,4 +100,3 @@ version_variables = [
 ]
 version_toml = ["pyproject.toml:project.version"]
 branch = "main"
-build_command = "poetry build"
