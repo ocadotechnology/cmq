@@ -3,6 +3,7 @@ import json
 import os
 import sys
 
+from cmq import __version__
 from cmq.plugin import PluginManager
 
 
@@ -11,6 +12,7 @@ def save_to_file(data, output):
 
 
 @click.command()
+@click.version_option(__version__)
 @click.argument('query', required=False)
 @click.option('-v', '--verbose', is_flag=True, default=False, help='Enable verbose output')
 @click.option('-o', '--output', type=click.File('w'), default=sys.stdout, help='Output file')

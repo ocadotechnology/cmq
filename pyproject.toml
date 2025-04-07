@@ -92,3 +92,12 @@ show_missing = true
 
 [tool.coverage.xml]
 output = "coverage.xml"
+
+[tool.semantic_release]
+version_variables = [
+    "src/cmq/__init__.py:__version__",
+    "pyproject.toml:version"
+]
+version_toml = ["pyproject.toml:project.version"]
+branch = "main"
+build_command = "poetry build"
