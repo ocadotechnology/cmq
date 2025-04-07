@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.1.2 (2025-04-07)
+
+### Bug Fixes
+
+- Added Python setup and build
+  ([`d328988`](https://github.com/ocadotechnology/cmq/commit/d328988065bc52777b59127dfd324ce70f09a491))
+
+
 ## v0.1.1 (2025-04-07)
 
 ### Bug Fixes
