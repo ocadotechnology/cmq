@@ -1,6 +1,6 @@
-# Cloud Multi Query
+# CMQ
 
-Cloud Multi Query is a Python library & CLI tool that allows you to run the same query across multiple cloud accounts in parallel, making it easy to gather insights and manage multi-account environments efficiently.
+Cloud Multi Query (CMQ) is a Python library & CLI tool that allows you to run the same query across multiple cloud accounts in parallel, making it easy to gather insights and manage multi-account environments efficiently.
 
 So far, CMQ only supports AWS cloud accounts. However, the plugable structure of CMQ allows for the creation of new session and resource types to include other cloud providers.
 
