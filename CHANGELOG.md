@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.1.4 (2025-04-09)
+
+### Bug Fixes
+
+- Add urls to toml file
+  ([`feef962`](https://github.com/ocadotechnology/cmq/commit/feef9623f4ad87e6f820d220f181ddde0205227b))
+
+
 ## v0.1.3 (2025-04-07)
 
 ### Bug Fixes
