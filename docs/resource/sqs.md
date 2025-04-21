@@ -1,8 +1,5 @@
 ## SQS
 ::: cmq.aws.resource.sqs.sqs
 
-## Inherited from ActionInterface
-::: cmq.base.ActionInterface
-
-## Inherited from ResourceInterface
-::: cmq.base.ResourceInterface
+## Inherited from Resource
+::: cmq.base.Resource
