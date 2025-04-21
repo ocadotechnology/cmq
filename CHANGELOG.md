@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.1.8 (2025-04-21)
+
+### Bug Fixes
+
+- #3 Fix docs inheritance
+  ([`715781f`](https://github.com/ocadotechnology/cmq/commit/715781f1d1f8066a0d13f8f0fa03a8f551f59111))
+
+
 ## v0.1.7 (2025-04-21)
 
 ### Bug Fixes
