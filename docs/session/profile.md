@@ -1,5 +1,5 @@
 ## Profile
 ::: cmq.aws.session.profile.profile
 
-## Inherited from ActionInterface
-::: cmq.base.ActionInterface
+## Inherited from Resource
+::: cmq.base.Resource
