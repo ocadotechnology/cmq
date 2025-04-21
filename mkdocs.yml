@@ -1,0 +1,61 @@
+site_name: cmq
+repo_url: https://github.com/ocadotechnology/cmq
+
+theme:
+  name: material
+
+nav:
+  - Home: 'index.md'
+  - Contribute: 'contribute.md'
+  - Resource overview:
+    - Resources:
+      - Address: 'resource/address.md'
+      - Alarm: 'resource/alarm.md'
+      - CloudFormation: 'resource/cloudformation.md'
+      - CloudTrail: 'resource/cloudtrail.md'
+      - DynamoDB: 'resource/dynamodb.md'
+      - Elasticache: 'resource/elasticache.md'
+      - Elasticache Parameter Group: 'resource/elasticache_parameter_group.md'
+      - Elasticache Subnet Group: 'resource/elasticache_subnet_group.md'
+      - Function: 'resource/function.md'
+      - Kinesis: 'resource/kinesis.md'
+      - KMS: 'resource/kms.md'
+      - KMS Alias: 'resource/kms_alias.md'
+      - Log: 'resource/log.md'
+      - Log Stream: 'resource/log_stream.md'
+      - Log Event: 'resource/log_event.md'
+      - Metric: 'resource/metric.md'
+      - RDS: 'resource/rds.md'
+      - RDS Parameter Group: 'resource/rds_parameter_group.md'
+      - Resource Explorer: 'resource/resource_explorer.md'
+      - Resource Group: 'resource/resource_group.md'
+      - S3: 'resource/s3.md'
+      - S3 Object: 'resource/s3_object.md'
+      - SNS: 'resource/sns.md'
+      - SQS: 'resource/sqs.md'
+      - User: 'resource/user.md'
+      - User Key: 'resource/user_key.md'
+      - Role: 'resource/role.md'
+    - Sessions:
+      - Profile: 'session/profile.md'
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+
+plugins:
+- search
+- autorefs:
+    resolve_closest: true
+- mkdocs-video:
+    css_style:
+      width: "100%"
+      height: "208px"
+- mkdocstrings:
+    handlers:
+      python:
+        paths: [src]
+        options:
+          show_inheritance_diagram: true
+          allow_inspection: true
+          show_source: false
