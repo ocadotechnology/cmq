@@ -14,7 +14,3 @@ coverage*
 
 # Gitlab
 .gitlab*
-
-# Docs
-docs
-mkdocs.yml

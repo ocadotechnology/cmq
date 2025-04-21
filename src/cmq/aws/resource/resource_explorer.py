@@ -16,11 +16,6 @@ class resource_explorer(AWSResource):
 
     Methods:
         get_parameters: Get the parameters for the resource explorer.
-
-    Note:
-        If the resource explorer is loaded from the application session,
-        it will automatically filter resources based on the app_context_id
-        of the application.
     """
 
     def __init__(self, parent=None):
@@ -29,12 +24,3 @@ class resource_explorer(AWSResource):
         self._resource = "resource-explorer"
         self._list_function = "search"
         self._list_key = "Resources"
-
-    def get_parameters(self, context: dict) -> dict:
-        parameters = self._list_parameters.copy()
-        if 'app_context_id' in context:
-            parameters["QueryString"] = " ".join([
-                parameters.get("QueryString", ""),
-                f"tag:app_context_id={context['app_context_id']}",
-            ])
-        return parameters
