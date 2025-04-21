@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.1.7 (2025-04-21)
+
+### Bug Fixes
+
+- #3 Install python & package
+  ([`d2053da`](https://github.com/ocadotechnology/cmq/commit/d2053daab6cb63d32cf6c96ef574dfa92a757806))
+
+
 ## v0.1.6 (2025-04-21)
 
 ### Bug Fixes
