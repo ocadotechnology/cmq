@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.1.5 (2025-04-21)
+
+### Bug Fixes
+
+- #3 Fix GH workflow
+  ([`2a15fb0`](https://github.com/ocadotechnology/cmq/commit/2a15fb0369af9664171a9176da875ed48f7a197d))
+
+### Documentation
+
+- #3 Added basic documentation
+  ([`9ee00c4`](https://github.com/ocadotechnology/cmq/commit/9ee00c41aab0b29389e404d8660835f3a5ae0129))
+
+
 ## v0.1.4 (2025-04-09)
 
 ### Bug Fixes
