@@ -11,6 +11,10 @@ class sqs(AWSResource):
         self._list_function = "list_queues"
         self._list_key = "QueueUrls"
 
+        self._describe_function = "get_queue_attributes"
+        self._describe_function_key = "QueueUrl"
+        self._describe_resource_key = "resource"
+
         self._tag_function = "list_queue_tags"
         self._tag_function_key = "QueueUrl"
 
@@ -26,3 +30,9 @@ class sqs(AWSResource):
 
     def _format_tags(self, tags) -> dict:
         return {"Tags": tags}
+
+    def _describe(self, context, client, resource):
+        describe_function = getattr(client, self._describe_function)
+        describe_identifier = self._get_describe_resource_identifier(context, resource)
+        details = describe_function(**{self._describe_function_key: describe_identifier}, AttributeNames=["All"])
+        resource.update({"Describe": details.get("Attributes", {})})
