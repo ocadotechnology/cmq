@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.3.0 (2025-04-23)
+
+### Features
+
+- #13 Added Keyspace & Keyspaces tables resources
+  ([`e9da2c4`](https://github.com/ocadotechnology/cmq/commit/e9da2c45538f6f4587586d5f000baba662a43070))
+
+
 ## v0.2.0 (2025-04-23)
 
 ### Bug Fixes
