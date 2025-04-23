@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.3.1 (2025-04-23)
+
+### Bug Fixes
+
+- #15 Add describe for attribute in SQS
+  ([`9ec64de`](https://github.com/ocadotechnology/cmq/commit/9ec64de698f126367177e9e3cd4bb9c77fe3df7e))
+
+
 ## v0.3.0 (2025-04-23)
 
 ### Features
