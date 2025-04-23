@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.2.0 (2025-04-23)
+
+### Bug Fixes
+
+- #9 Run workflows only with relevant changes
+  ([`ba73f3b`](https://github.com/ocadotechnology/cmq/commit/ba73f3b453bd8caa6518fa436b422645615287de))
+
+### Features
+
+- #11 Added secretsmanager secret resource
+  ([`1180969`](https://github.com/ocadotechnology/cmq/commit/1180969c45388fa11920ed528f8c436042f7f798))
+
+
 ## v0.1.8 (2025-04-21)
 
 ### Bug Fixes
