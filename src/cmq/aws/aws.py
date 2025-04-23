@@ -135,12 +135,15 @@ class DescribeResourceInterface:
             for resource in self.bar(context, resources, "describe"):
                 if isinstance(resource, dict):
                     try:
-                        describe_function = getattr(client, self._describe_function)
-                        describe_identifier = self._get_describe_resource_identifier(context, resource)
-                        details = describe_function(**{self._describe_function_key: describe_identifier})
-                        resource.update({"Describe": details})
+                        self._describe(context, client, resource)
                     except ClientError as ex:
                         resource.update({"Describe": {"error": str(ex)}})
+
+    def _describe(self, context, client, resource):
+        describe_function = getattr(client, self._describe_function)
+        describe_identifier = self._get_describe_resource_identifier(context, resource)
+        details = describe_function(**{self._describe_function_key: describe_identifier})
+        resource.update({"Describe": details})
 
 
 class MetricResourceInterface:
