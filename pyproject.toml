@@ -46,6 +46,7 @@ resource_group                  = "cmq.aws.resource.resource_group:resource_grou
 role                            = "cmq.aws.resource.role:role"
 s3_object                       = "cmq.aws.resource.s3_object:s3_object"
 s3                              = "cmq.aws.resource.s3:s3"
+secret                          = "cmq.aws.resource.secret:secret"
 sns                             = "cmq.aws.resource.sns:sns"
 sqs                             = "cmq.aws.resource.sqs:sqs"
 user_key                        = "cmq.aws.resource.user_key:user_key"
