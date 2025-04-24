@@ -159,7 +159,6 @@ class MetricResourceInterface:
                            dimensions: dict = {},
                            period: int = 60*60, unit: str = "Count",
                            start_time: datetime = None, end_time: datetime = None) -> dict:
-
         # Set default parameter values
         start_time = start_time or datetime.today() - timedelta(days=90)
         end_time = end_time or datetime.today()
