@@ -93,6 +93,8 @@ Currently, the supported resources are:
 * Elasticache parameter groups
 * Elasticache subnet groups
 * Functions (lambdas)
+* Keyspaces
+* Keyspaces tables
 * Kinesis streams
 * KMS keys
 * RDS databases
@@ -101,6 +103,7 @@ Currently, the supported resources are:
 * Resource groups
 * S3 buckets
 * S3 objects (experimental)
+* SecretsManager secrets
 * SNS topics
 * SQS queues
 * IAM users
