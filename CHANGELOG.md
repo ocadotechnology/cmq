@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.4.1 (2025-04-24)
+
+### Bug Fixes
+
+- #17 Fix metrics
+  ([`f6830f5`](https://github.com/ocadotechnology/cmq/commit/f6830f502f2205acd87a85d7e6c2f6bccce0154f))
+
+### Documentation
+
+- Add Keyspaces resources & SecretsManager secrets to the docs
+  ([`bdbcb08`](https://github.com/ocadotechnology/cmq/commit/bdbcb08df1a148df70bd06237b48f8b2b63397ec))
+
+
 ## v0.4.0 (2025-04-24)
 
 ### Features
