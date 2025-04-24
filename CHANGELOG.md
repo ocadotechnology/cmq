@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.4.3 (2025-04-24)
+
+### Bug Fixes
+
+- #17 Fix Metrics
+  ([`ee00889`](https://github.com/ocadotechnology/cmq/commit/ee00889e7b4849981c74a29ccdfca22af5ed95ef))
+
+
 ## v0.4.2 (2025-04-24)
 
 ### Bug Fixes
