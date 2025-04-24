@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.4.0 (2025-04-24)
+
+### Features
+
+- #19 Add describe for lambda functions
+  ([`bd760dc`](https://github.com/ocadotechnology/cmq/commit/bd760dce5c8e25c0e51bc8eac249e9f832b2096b))
+
+
 ## v0.3.2 (2025-04-24)
 
 ### Bug Fixes
