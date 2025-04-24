@@ -11,6 +11,10 @@ class function(AWSResource):
         self._list_function = "list_functions"
         self._list_key = "Functions"
 
+        self._describe_function = "get_function"
+        self._describe_function_key = "FunctionName"
+        self._describe_resource_key = "FunctionName"
+
         self._tag_function = "list_tags"
         self._tag_function_key = "Resource"
 
