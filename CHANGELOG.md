@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.3.2 (2025-04-24)
+
+### Bug Fixes
+
+- #17 Fixed data query Ids
+  ([`3eaf39f`](https://github.com/ocadotechnology/cmq/commit/3eaf39feb4d0a7879bfaaa9e273eadff494d1ae4))
+
+
 ## v0.3.1 (2025-04-23)
 
 ### Bug Fixes
