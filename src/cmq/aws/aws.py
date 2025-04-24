@@ -164,7 +164,7 @@ class MetricResourceInterface:
         end_time = end_time or datetime.today()
         return {
             "MetricDataQueries": [{
-                "Id": f"CMQ_{metric_name}",
+                "Id": f"cmq_{metric_name}",
                 "MetricStat": {
                     "Metric": {
                         "Namespace": namespace,
