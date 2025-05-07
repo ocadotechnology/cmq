@@ -80,9 +80,12 @@ cmq --verbose 'profile().elasticache().list()'
 ]
 ```
 
+# Docs
+
+* [https://ocadotechnology.github.io/cmq/](https://ocadotechnology.github.io/cmq/)
+
 ## Examples
 
-While we work on the full documentation, we'll share some example queries to give you an idea of what you can do with the tool:
 
 List RDS resources in one profile with name `account_a`
 ```bash
