@@ -67,9 +67,6 @@ class AWSClientInterface:
                 client = self.get_client(context)
                 page = getattr(client, self._list_function)(**self.get_parameters(context))
                 resources = self.get_paged_results(page)
-
-
-
             return resources
         except Exception as ex:
             return [{"error": str(ex)}]
