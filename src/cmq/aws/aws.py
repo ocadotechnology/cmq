@@ -18,7 +18,6 @@ class AWSClientInterface:
         self._list_key = ""
         self._list_parameters = {}
         self._list_paginated = True
-        self._includes = []
 
     @property
     def _desc(self) -> str:
@@ -50,6 +49,15 @@ class AWSClientInterface:
         return paginator.paginate(**self.get_parameters(context))
 
     def _get(self, context) -> list:
+        """
+        Retrieves resources from AWS and processes them through the pipeline.
+
+        Args:
+            context (dict): The context containing session information.
+
+        Returns:
+            list: List of resources, possibly with errors.
+        """
         resources = []
         try:
             if self._list_paginated:
@@ -60,17 +68,24 @@ class AWSClientInterface:
                 page = getattr(client, self._list_function)(**self.get_parameters(context))
                 resources = self.get_paged_results(page)
 
-            # Include additional information in the resources
-            for include in self._includes:
-                include(context, resources)
+
 
             return resources
         except Exception as ex:
             return [{"error": str(ex)}]
 
     def get(self, context):
+        """
+        Retrieves resources and processes them through the pipeline.
+
+        Args:
+            context (dict): The context containing session information.
+
+        Returns:
+            list: Processed list of resources.
+        """
         resources = self._get(context)
-        return self._get_attr(self._exclude(resources))
+        return self._process_pipeline(resources, context)
 
     def _get_results(self, page) -> list | None:
         for value in page.values():
@@ -87,13 +102,19 @@ class TagResourceInterface:
         self._tag_resource_key = ""
 
     def tags(self) -> "TagResourceInterface":
-        self._includes.append(self._tag_resources)
+        """
+        Adds a tag operation to the pipeline that will retrieve tags for the resources.
+
+        Returns:
+            TagResourceInterface: The updated resource object.
+        """
+        self._pipeline.append(self._tag_resources)
         return self
 
     def _get_tag_resource_identifier(self, context, resource) -> str:
         return resource[self._tag_resource_key]
 
-    def _tag_resources(self, context, resources):
+    def _tag_resources(self, resources, context) -> list:
         if self._tag_function:
             client = self.get_client(context)
             for resource in self.bar(context, resources, "tags"):
@@ -107,6 +128,7 @@ class TagResourceInterface:
                         resource.update(tags)
                     except ClientError as ex:
                         resource.update({"Tags": {"error": str(ex)}})
+        return resources
 
     def _get_tag_from_result(self, result) -> list:
         return self._get_results(result) or []
@@ -123,13 +145,13 @@ class DescribeResourceInterface:
         self._describe_resource_key = ""
 
     def describe(self) -> "DescribeResourceInterface":
-        self._includes.append(self._describe_resources)
+        self._pipeline.append(self._describe_resources)
         return self
 
     def _get_describe_resource_identifier(self, context, resource) -> str:
         return resource[self._describe_resource_key]
 
-    def _describe_resources(self, context, resources):
+    def _describe_resources(self, resources, context) -> list:
         if self._describe_function:
             client = self.get_client(context)
             for resource in self.bar(context, resources, "describe"):
@@ -138,6 +160,7 @@ class DescribeResourceInterface:
                         self._describe(context, client, resource)
                     except ClientError as ex:
                         resource.update({"Describe": {"error": str(ex)}})
+        return resources
 
     def _describe(self, context, client, resource):
         describe_function = getattr(client, self._describe_function)
@@ -185,7 +208,7 @@ class MetricResourceInterface:
             "EndTime": end_time
         }
 
-    def get_metric_data(self, results, context, **kwargs):
+    def get_metric_data(self, results, context, **kwargs) -> list:
         client = self.get_client(context, "cloudwatch")
         dimensions = {self._metric_dimension_name: context[f"{self._desc}"][self._metric_dimension_resource_key]}
         parameters = self._format_parameters(
@@ -205,6 +228,7 @@ class MetricResourceInterface:
                         response[key] = value
         account_list = results.setdefault(context["session_name"], [])
         account_list.append(response)
+        return results
 
     def metric(self, **kwargs) -> dict:
         if not self._metric_namespace:
