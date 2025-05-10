@@ -45,7 +45,7 @@ class profile(Session):
         with self.context("[bold green]Getting profile list..."):
             config, profiles = self.get_profiles()
             sessions = [{"name": self.get_profile_name(profile), **config[profile]} for profile in profiles]
-            return self._get_attr(self._exclude(sessions))
+            return self._process_pipeline(sessions, {})
 
     def get_session(self, profile: dict) -> boto3.Session:
         try:

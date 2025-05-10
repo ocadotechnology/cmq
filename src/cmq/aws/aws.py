@@ -56,7 +56,7 @@ class AWSClientInterface:
             context (dict): The context containing session information.
 
         Returns:
-            list: List of resources, possibly with errors.
+            list: List of resources
         """
         resources = []
         try:
@@ -142,6 +142,12 @@ class DescribeResourceInterface:
         self._describe_resource_key = ""
 
     def describe(self) -> "DescribeResourceInterface":
+        """
+        Adds a describe operation to the pipeline that will retrieve details for the resources.
+
+        Returns:
+            DescribeResourceInterface: The updated resource object.
+        """
         self._pipeline.append(self._describe_resources)
         return self
 
@@ -206,6 +212,17 @@ class MetricResourceInterface:
         }
 
     def get_metric_data(self, results, context, **kwargs) -> list:
+        """
+        Retrieves metric data from AWS CloudWatch and processes it through the pipeline.
+
+        Args:
+            results (dict): The dictionary to store the results.
+            context (dict): The context containing session information.
+            **kwargs: Additional keyword arguments for the metric data query.
+
+        Returns:
+            list: List of metric data results.
+        """
         client = self.get_client(context, "cloudwatch")
         dimensions = {self._metric_dimension_name: context[f"{self._desc}"][self._metric_dimension_resource_key]}
         parameters = self._format_parameters(
@@ -228,6 +245,15 @@ class MetricResourceInterface:
         return results
 
     def metric(self, **kwargs) -> dict:
+        """
+        Retrieves metric data from AWS CloudWatch and processes it through the pipeline.
+
+        Args:
+            **kwargs: Additional keyword arguments for the metric data query.
+
+        Returns:
+            dict: Dictionary of metric data results.
+        """
         if not self._metric_namespace:
             exit(f"Metric namespace not defined for {self._service}")
 
@@ -236,6 +262,13 @@ class MetricResourceInterface:
         return results
 
     def plot(self, unit_factor=1, **kwargs) -> None:
+        """
+        Plots the metric data.
+
+        Args:
+            unit_factor (int): The factor to divide the metric values by.
+            **kwargs: Additional keyword arguments for the metric data query.
+        """
         resources = self.metric(**kwargs)
 
         plt.clf()
