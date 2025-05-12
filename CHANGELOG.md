@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.5.0 (2025-05-12)
+
+### Documentation
+
+- Add docs link to the README
+  ([`80e25aa`](https://github.com/ocadotechnology/cmq/commit/80e25aaf111d6e15a2a275455aa522db68ed3a89))
+
+### Features
+
+- Vpc and Route53 resources
+  ([`e4582a0`](https://github.com/ocadotechnology/cmq/commit/e4582a0ac720f134b4c886a93c5fb6bed689258b))
+
+
 ## v0.4.3 (2025-04-24)
 
 ### Bug Fixes
