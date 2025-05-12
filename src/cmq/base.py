@@ -47,10 +47,7 @@ class ResourceInterface(NodeInterface):
 
     def __init__(self, parent):
         super().__init__(parent)
-        self._attrs = []
-        self._filters = []
-        self._transformed_fields = {}
-        self._calculated_fields = {}
+        self._pipeline = []
 
     def __call__(self):
         return self
@@ -75,20 +72,23 @@ class ResourceInterface(NodeInterface):
 
     def attr(self, *args: list[str]) -> "ResourceInterface":
         """
-        Adds the given attributes to the resource.
+        Adds a selection operation to the pipeline that will select the specified attributes.
 
         Args:
-            *args (list[str]): The attributes to be added.
+            *args (list[str]): The attributes to be selected.
 
         Returns:
             ResourceInterface: The updated resource object.
         """
-        self._attrs.extend(args)
+        self._pipeline.append(lambda resources, context: [
+            {key: self._safe_key(r, key) for key in args} if isinstance(r, dict) else r
+            for r in resources
+        ])
         return self
 
     def filter(self, func: callable) -> "ResourceInterface":
         """
-        Adds a filter function to the resource.
+        Adds a filter operation to the pipeline that will filter resources based on the given function.
 
         Args:
             func (callable): The filter function to be added.
@@ -96,12 +96,14 @@ class ResourceInterface(NodeInterface):
         Returns:
             ResourceInterface: The updated resource object.
         """
-        self._filters.append(func)
+        self._pipeline.append(lambda resources, context: [
+            r for r in resources if self._safe_filter(func, r)
+        ])
         return self
 
     def transform(self, key: str, func: callable) -> "ResourceInterface":
         """
-        Adds a transformation function to the resource.
+        Adds a transformation operation to the pipeline that will transform the specified attribute.
 
         Args:
             key (str): The key of the attribute to transform.
@@ -110,12 +112,15 @@ class ResourceInterface(NodeInterface):
         Returns:
             ResourceInterface: The updated resource object.
         """
-        self._transformed_fields[key] = func
+        self._pipeline.append(lambda resources, context: [
+            {**r, key: func(r.get(key)) if key in r else None} if isinstance(r, dict) else r
+            for r in resources
+        ])
         return self
 
     def calculate(self, key: str, func: callable) -> "ResourceInterface":
         """
-        Adds a calculation function to the resource.
+        Adds a calculation operation to the pipeline that will calculate a new attribute.
 
         Args:
             key (str): The new key of the attribute.
@@ -124,47 +129,46 @@ class ResourceInterface(NodeInterface):
         Returns:
             ResourceInterface: The updated resource object.
         """
-        self._calculated_fields[key] = func
+        self._pipeline.append(lambda resources, context: [
+            {**r, key: func(r)} if isinstance(r, dict) else r
+            for r in resources
+        ])
         return self
-
-    def _transform(self, resource: dict) -> dict:
-        if isinstance(resource, dict):
-            for key, func in self._transformed_fields.items():
-                resource[key] = func(resource.get(key)) if key in resource else None
-        return resource
-
-    def _calculate(self, resource: dict) -> dict:
-        if isinstance(resource, dict):
-            for key, func in self._calculated_fields.items():
-                resource[key] = func(resource)
-        return resource
-
-    def _get_attr_from_resource(self, resource) -> Any:
-        if self._attrs and isinstance(resource, dict):
-            return {key: self._safe_key(resource, key) for key in self._attrs}
-        else:
-            return resource
-
-    def _get_attr(self, resource_list: list) -> list:
-        return [self._get_attr_from_resource(resource) for resource in resource_list]
-
-    def _safe_key(self, resource: dict, key: str) -> Any:
-        with suppress(AttributeError, KeyError, ValueError):
-            return benedict(resource).get(key)
-        return None
 
     def _safe_filter(self, func: callable, resource: dict) -> bool:
         with suppress(AttributeError, KeyError, TypeError):
             return func(resource)
         return False
 
-    def _exclude(self, resources: list) -> list:
-        if self._transformed_fields:
-            resources = [self._transform(r) for r in resources]
-        if self._calculated_fields:
-            resources = [self._calculate(r) for r in resources]
+    def _safe_key(self, resource: dict, key: str) -> Any:
+        """
+        Safely retrieves a value from a resource dictionary using the benedict library.
 
-        return [r for r in resources if all(self._safe_filter(f, r) for f in self._filters)]
+        Args:
+            resource (dict): The resource dictionary.
+            key (str): The key to retrieve.
+
+        Returns:
+            Any: The value associated with the key, or None if not found.
+        """
+        with suppress(AttributeError, KeyError, ValueError):
+            return benedict(resource).get(key)
+        return None
+
+    def _process_pipeline(self, resources: list, context: dict) -> list:
+        """
+        Processes the resources through all pipeline operations.
+
+        Args:
+            resources (list): The list of resources to process.
+            context (dict): The context containing session information.
+
+        Returns:
+            list: The processed resources after applying all pipeline operations.
+        """
+        for operation in self._pipeline:
+            resources = operation(resources, context)
+        return resources
 
     def eq(self, key, value) -> "ResourceInterface":
         """
@@ -177,11 +181,13 @@ class ResourceInterface(NodeInterface):
         Returns:
             ResourceInterface: The updated resource object.
         """
-        self._filters.append(lambda x: benedict(x).get(key) == value)
+        self._pipeline.append(lambda resources, context: [
+            r for r in resources if self._safe_key(r, key) == value
+        ])
         return self
 
     def ne(self, key, value) -> "ResourceInterface":
-        """
+        """ 
         Adds a not-equal filter to the resource.
 
         Args:
@@ -191,7 +197,9 @@ class ResourceInterface(NodeInterface):
         Returns:
             ResourceInterface: The updated resource object.
         """
-        self._filters.append(lambda x: benedict(x).get(key) != value)
+        self._pipeline.append(lambda resources, context: [
+            r for r in resources if self._safe_key(r, key) != value
+        ])
         return self
 
     def in_(self, key, value) -> "ResourceInterface":
@@ -205,7 +213,9 @@ class ResourceInterface(NodeInterface):
         Returns:
             ResourceInterface: The updated resource object.
         """
-        self._filters.append(lambda x: benedict(x).get(key) in value)
+        self._pipeline.append(lambda resources, context: [
+            r for r in resources if self._safe_key(r, key) in value
+        ])
         return self
 
     def contains(self, key, value) -> "ResourceInterface":
@@ -219,7 +229,9 @@ class ResourceInterface(NodeInterface):
         Returns:
             ResourceInterface: The updated resource object.
         """
-        self._filters.append(lambda x: value in benedict(x).get(key))
+        self._pipeline.append(lambda resources, context: [
+            r for r in resources if value in self._safe_key(r, key)
+        ])
         return self
 
     def not_contains(self, key, value) -> "ResourceInterface":
@@ -233,7 +245,9 @@ class ResourceInterface(NodeInterface):
         Returns:
             ResourceInterface: The updated resource object.
         """
-        self._filters.append(lambda x: value not in benedict(x).get(key))
+        self._pipeline.append(lambda resources, context: [
+            r for r in resources if value not in self._safe_key(r, key)
+        ])
         return self
 
     def starts_with(self, key, value) -> "ResourceInterface":
@@ -247,7 +261,9 @@ class ResourceInterface(NodeInterface):
         Returns:
             ResourceInterface: The updated resource object.
         """
-        self._filters.append(lambda x: benedict(x).get(key).startswith(value))
+        self._pipeline.append(lambda resources, context: [
+            r for r in resources if self._safe_key(r, key).startswith(value)
+        ])
         return self
 
     def ends_with(self, key, value) -> "ResourceInterface":
@@ -261,7 +277,9 @@ class ResourceInterface(NodeInterface):
         Returns:
             ResourceInterface: The updated resource object.
         """
-        self._filters.append(lambda x: benedict(x).get(key).endswith(value))
+        self._pipeline.append(lambda resources, context: [
+            r for r in resources if self._safe_key(r, key).endswith(value)
+        ])
         return self
 
     def gt(self, key, value) -> "ResourceInterface":
@@ -275,7 +293,9 @@ class ResourceInterface(NodeInterface):
         Returns:
             ResourceInterface: The updated resource object.
         """
-        self._filters.append(lambda x: benedict(x).get(key) > value)
+        self._pipeline.append(lambda resources, context: [
+            r for r in resources if self._safe_key(r, key) > value
+        ])
         return self
 
     def lt(self, key, value) -> "ResourceInterface":
@@ -289,7 +309,9 @@ class ResourceInterface(NodeInterface):
         Returns:
             ResourceInterface: The updated resource object.
         """
-        self._filters.append(lambda x: benedict(x).get(key) < value)
+        self._pipeline.append(lambda resources, context: [
+            r for r in resources if self._safe_key(r, key) < value
+        ])
         return self
 
     def context(self, status):
