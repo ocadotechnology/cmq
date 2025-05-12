@@ -101,6 +101,7 @@ Currently, the supported resources are:
 * RDS parameter groups
 * Resource Explorer
 * Resource groups
+* Route53 Hosted Zones
 * S3 buckets
 * S3 objects (experimental)
 * SecretsManager secrets
@@ -109,6 +110,7 @@ Currently, the supported resources are:
 * IAM users
 * IAM user keys
 * IAM roles
+* VPC
 
 ### Getting a list of resources
 
