@@ -39,6 +39,8 @@ nav:
       - User: 'resource/user.md'
       - User Key: 'resource/user_key.md'
       - Role: 'resource/role.md'
+      - Route53: 'resource/route53.md'
+      - VPC: 'resource/vpc.md'
     - Sessions:
       - Profile: 'session/profile.md'
 
