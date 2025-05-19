@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.6.0 (2025-05-19)
+
+### Features
+
+- #26 Pipeline
+  ([`16cb92c`](https://github.com/ocadotechnology/cmq/commit/16cb92ca04eab507e78a9f4253ce34e0ab6235c2))
+
+
 ## v0.5.0 (2025-05-12)
 
 ### Documentation
