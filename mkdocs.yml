@@ -8,6 +8,8 @@ nav:
   - Home: 'index.md'
   - Contribute: 'contribute.md'
   - Resource overview:
+    - Sessions:
+      - Profile: 'session/profile.md'
     - Resources:
       - Address: 'resource/address.md'
       - Alarm: 'resource/alarm.md'
@@ -31,6 +33,7 @@ nav:
       - RDS Parameter Group: 'resource/rds_parameter_group.md'
       - Resource Explorer: 'resource/resource_explorer.md'
       - Resource Group: 'resource/resource_group.md'
+      - Route53: 'resource/route53.md'
       - S3: 'resource/s3.md'
       - S3 Object: 'resource/s3_object.md'
       - SecretsManager Secret: 'resource/secret.md'
@@ -41,8 +44,6 @@ nav:
       - Role: 'resource/role.md'
       - Route53: 'resource/route53.md'
       - VPC: 'resource/vpc.md'
-    - Sessions:
-      - Profile: 'session/profile.md'
 
 markdown_extensions:
   - attr_list

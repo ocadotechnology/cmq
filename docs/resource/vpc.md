@@ -17,5 +17,7 @@ profile().vpc().describe().list()
 ## VPC
 ::: cmq.aws.resource.vpc.vpc
 
-## Inherited from AWSResource
-::: cmq.aws.aws.AWSResource
+## Inherited from ResourceInterface
+::: cmq.base.ResourceInterface
+## Inherited from Resource
+::: cmq.base.Resource

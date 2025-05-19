@@ -20,5 +20,7 @@ profile().route53().tags().list()
 ## Route53
 ::: cmq.aws.resource.route53.route53
 
-## Inherited from AWSResource
-::: cmq.aws.aws.AWSResource
+## Inherited from ResourceInterface
+::: cmq.base.ResourceInterface
+## Inherited from Resource
+::: cmq.base.Resource

@@ -2,35 +2,30 @@
 
 ## Configure your environment
 
-`cmq` uses `poetry` to manage dependencies. It's recommended to use a virtual environment.
+`cmq` uses `poetry` to manage dependencies. Poetry recommends to use a virtual environment, but it's not mandatory.
 
-Run the following commands to prepare the environment:
+Clone the repository and install dependencies:
 
 ```bash
-pip install poetry
+git clone https://github.com/ocadotechnology/cmq
+cd cmq
 poetry install
 ```
 
 ## How to add new resources
 
-Adding support for a new resource is as simple as create a new module as part of the `cmq.aws.resource` package with the following information:
-
-* The AWS Service where the resource belongs to
-* The Boto3 function that list/describe the resource
-* *[OPTIONAL]* The Boto3 function that get the tags for the resource
-* *[OPTIONAL]* The CloudWatch Metric namespace and dimension for the resource
+Adding support for a new resource is really simple. `cmq` uses a plugin system to load resources. You can add new sessions/resources to `cmq` directly or you can create your own packages. Let's see how to do it.
 
 ### Adding a new resource
 
-Let's add a new resource for IAM Users.
+Let's add a new resource to list IAM Users.
 
-The first thing we have to do is create a new resource module. Create the file `user.py` inside the `src/cmq/aws/resource` folder with the following content:
+The first thing we have to do is create a new resource class. Create the file `user.py` inside the `src/cmq/aws/resource` folder with the following content:
 
 ```python
-from cmq.aws.aws import Resource
+from cmq.aws.aws import AWSResource
 
-
-class user(Resource):
+class user(AWSResource):
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -40,18 +35,24 @@ class user(Resource):
         self._list_key = "Users"
 ```
 
-*The name of the module and the name of the class should be the same (`user.py` & `user` classname).*
-
 * `_service`: This is the name of the AWS service
 * `_resource`: This is a descriptive/short value to name the resource
 * `_list_function`: The `boto3` function that list/describe the resource
-* `_list_key`: The key that contains the results in the response. If this is not defined, cmq will try to find the list automatically.
+* `_list_key`: The key that contains the results in the response. If this is not defined, `cmq` will try to find the list automatically.
 * `_list_paginated`: `True` (default value) if the `boto3` function support pagination. `False` otherwise.
 
 
+### Add the new class to the project entry point
+
+Open the file `pyproject.toml` and add the following line to the section `[project.entry-points."cmq.provider.aws"]`:
+
+```toml
+user = "cmq.aws.resource.user:user"
+```
+
 ### Using the new resource
 
-You can start using the new resource to list IAM users now. For example, let's list all users in `account-a` account:
+We can start using the new resource to list IAM users. For example, let's list all users in `account-a` account:
 
 ```bash
 cmq 'profile(name="account-a").user().list()'
@@ -66,7 +67,7 @@ cmq 'profile(name="account-a").user().list()'
 ...
 ```
 
-All the filters functions are also applicable to the new resource. For example, we can filter the attributes only to `UserName` and values that contains `test`.
+All the filters are also compatible with the new resource. For example, we can retrieve only the attributes `UserName` and values that contains `test`.
 
 ```bash
 cmq 'profile(name="account-a").user().attr("UserName").contains("UserName", "test").list()'
@@ -82,15 +83,14 @@ cmq 'profile(name="account-a").user().attr("UserName").contains("UserName", "tes
 
 ### Adding support for tags
 
-Many of the AWS resources support tags. Adding support to load tags as part of your new resource is similar listing the resource. All we need to do is adding a few attributes/method that describe how the tags are loaded.
+Similarly to the list function, `cmq` provides a method to load tags as part of the resource definition. All we need to do is adding a few attributes/method that describe how tags are loaded.
 
 Update the above class with the following details:
 
 ```python
-from cmq.aws.aws import Resource
+from cmq.aws.aws import AWSResource
 
-
-class user(Resource):
+class user(AWSResource):
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -101,50 +101,54 @@ class user(Resource):
 
         self._tag_function = "list_user_tags"
         self._tag_function_key = "UserName"
+        self._tag_resource_key = "UserName"
 ```
 
 The new attributes are:
 
 * `_tag_function`: The `boto3` function that list tags for this resource
 * `_tag_function_key`: The parameter passed to the function to list the tags
+* `_tag_resource_key`: The key that identify the resource in the response of `_list_function`
 
-#### Resource identifier for tag function
+The `cmq` will automatically load the tags for the resource when you call the `tags()` action.
 
-Usually, the value of `_tag_function_key` is also the key that identify the resource in the response of `_list_function`.
-For example, in the case of IAM user, the list function `list_users` returns a list of dictionaries where each user is identified by the key `UserName`, which is also the parameter for the function `list_user_tags`.
+#### Managing tags
 
-If that's not the case, you'd need to define how the value is calculated from the list response by implementing the `_get_tag_resource_identifier` function. For example, the function that list tags for Kinesis streams expects to receive the ARN of the stream:
+Sometimes getting the correct value for the tag function is a little bit more complex. For these cases, there are a couple of methods to handle the situation:
+
+* `_get_tag_resource_identifier`: This method is called to get the value for the tag function. It receives the resource as a parameter and returns the value to be used in the tag function.
+* `_format_tags`: This method is called to format the tags returned by the tag function. It receives the tags as a parameter and returns the formatted tags.
+
+For example, the function that list tags for Kinesis streams expects to receive the ARN of the stream:
 
 ```python
     def _get_tag_resource_identifier(self, context: dict[str, Any], resource: dict[str, Any]) -> str:
         return resource["StreamARN"]
 ```
 
-#### Tag format
+### Adding support for describe 
 
-`cmq` manages automatically the response of the function that list the tags, as long the response uses the standard format:
-
-```python
-{
-    'Tags': [
-        {
-            'Key': 'string',
-            'Value': 'string'
-        },
-    ],
-    'IsTruncated': True|False,
-    'Marker': 'string'
-}
-```
-
-If that's not the case, you'd need to implement the function to format properly the tags for your resource.
-You can do so by implementing the `_format_tags` method. For example, `kms` list tag function uses a different format, so you can implement the function to keep the same format:
+Sometimes the information available in the list function is not enough. In this case, you can add a describe function to retrieve the full information for a specific resource. A good example of this is is DynamoDB tables. DynamoDB tables are identified by the name, but the list function only returns the name of the table. To get the full information, we need to use the describe function.
 
 ```python
-    def _format_tags(self, tags) -> dict:
-        return {"Tags": {tag["TagKey"]: tag["TagValue"] for tag in tags}}
+        self._describe_function = "describe_table"
+        self._describe_function_key = "TableName"
+        self._describe_resource_key = "resource"
 ```
 
+The new attributes are:
+
+* `_describe_function`: The `boto3` function that describe the resource
+* `_describe_function_key`: The parameter passed to the function to describe the resource
+* `_describe_resource_key`: The key that identify the resource in the response of `_list_function`
+
+When you call the `describe` action, `cmq` will use the `_describe_function` to retrieve the full information for the resource.
+
+Now, we can retrieve the full information for all tables that start with `users-`:
+
+```bash
+cmq 'profile().dynamodb().starts_with("resource", "users-").describe().list()'
+```
 
 ### Adding support for metrics
 
@@ -159,3 +163,9 @@ AWS publish CloudWatch metrics to allow users monitor the usage of their service
 * `_metric_namespace`: This is the namespace of the metric in CloudWatch
 * `_metric_dimension_name`: This is the dimension inside the namespace
 * `_metric_dimension_resource_key`: This is the resource key that need to be used in the dimension
+
+Now we can get RDS metrics for this resource. For example, let's get the maximum `CPUUtilization` of `webserver` databases:
+
+```python
+profile().rds().tags().eq("Tags.appId", "webserver").metric(statistic="Maximum", metric_name="CPUUtilization", unit="Percent")
+```
