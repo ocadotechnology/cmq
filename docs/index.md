@@ -160,7 +160,7 @@ For example, to list all `sns` topics in all regions for each account, you can d
 profile().region().sns().list()
 ```
 
-You can also limit the regions to a specific list of regions using the `regions` parameter:
+You can also limit the regions to a specific list using the `regions` parameter:
 
 ```python
 profile().region(regions=["us-east-1", "eu-west-1"]).sns().list()
