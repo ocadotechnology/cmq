@@ -153,12 +153,12 @@ profile().sns().dict()
 
 ### Listing resources in all enabled regions
 
-To list resources in all enabled regions, you can use the `region` resource. This will retrieve the resources from all the regions available in each account.
+To list resources in all enabled regions, you can use the `region` resource. This will retrieve regions available in each account and then list the resources in each region.
+
+For example, to list all `sns` topics in all regions for each account, you can do the following:
 ```python
 profile().region().sns().list()
 ```
-
-This will list all the `sns` topics in all the regions available in each account.
 
 You can also limit the regions to a specific list of regions using the `regions` parameter:
 
