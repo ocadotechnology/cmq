@@ -1,6 +1,20 @@
 # CHANGELOG
 
 
+## v0.7.0 (2025-06-10)
+
+### Features
+
+- #31 Add support for multi region queries ([#32](https://github.com/ocadotechnology/cmq/pull/32),
+  [`07d955b`](https://github.com/ocadotechnology/cmq/commit/07d955b615fc4b7a5cc9c654fb2f6c03d355a564))
+
+* feat: #31 Add support for multi region queries * doc: #31 Fix region example
+
+---------
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.6.0 (2025-05-19)
 
 ### Features
