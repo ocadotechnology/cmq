@@ -30,7 +30,7 @@ pip install cmq
 
 The first object is always a `session` class. This class is the responsible to configure a `boto3` session object for the objects in the resource chain.
 
-The resource chain is an optional ordered list of resources calls. For example, in the resource chain above we get all the RDS resources and for each of the them, we get the RDS parameter groups. The operations defined in the resource chain are executed in parallel for each account retrieved by the session object. 
+The resource chain is an optional ordered list of resources calls. For example, in the resource chain above we get all the RDS resources and for each of the them, we get the RDS parameter groups. The operations defined in the resource chain are executed in parallel for each account retrieved by the session object.
 
 Both `session` and `resource chain` support additional calls to filter/manage the results. These operation are executed in order, so filtering resources in the request is more efficient than filtering the results in the response.
 
@@ -107,6 +107,7 @@ Currently, the supported resources are:
 * KMS keys
 * RDS databases
 * RDS parameter groups
+* Regions
 * Resource Explorer
 * Resource groups
 * Route53 Hosted Zones
@@ -148,6 +149,21 @@ Sometimes it's useful to have the list of resources grouped by the account name.
 
 ```python
 profile().sns().dict()
+```
+
+### Listing resources in all enabled regions
+
+To list resources in all enabled regions, you can use the `region` resource. This will retrieve regions available in each account and then list the resources in each region.
+
+For example, to list all `sns` topics in all regions for each account, you can do the following:
+```python
+profile().region().sns().list()
+```
+
+You can also limit the regions to a specific list using the `regions` parameter:
+
+```python
+profile().region(regions=["us-east-1", "eu-west-1"]).sns().list()
 ```
 
 ### Listing resources in CSV format

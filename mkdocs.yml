@@ -31,6 +31,7 @@ nav:
       - Metric: 'resource/metric.md'
       - RDS: 'resource/rds.md'
       - RDS Parameter Group: 'resource/rds_parameter_group.md'
+      - Region: 'resource/region.md'
       - Resource Explorer: 'resource/resource_explorer.md'
       - Resource Group: 'resource/resource_group.md'
       - Route53: 'resource/route53.md'
