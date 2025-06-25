@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v0.7.1 (2025-06-25)
+
+### Bug Fixes
+
+- Metric names with non-standard characters ([#34](https://github.com/ocadotechnology/cmq/pull/34),
+  [`b55e8f5`](https://github.com/ocadotechnology/cmq/commit/b55e8f5aa3411d8f4a76f52e2fff58aeae486a23))
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.7.0 (2025-06-10)
 
 ### Features
