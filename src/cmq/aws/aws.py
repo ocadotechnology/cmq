@@ -1,4 +1,5 @@
 import boto3
+import re
 
 from botocore.exceptions import ClientError
 from datetime import datetime, timedelta
@@ -190,7 +191,7 @@ class MetricResourceInterface:
         end_time = end_time or datetime.today()
         return {
             "MetricDataQueries": [{
-                "Id": f"cmq_{metric_name}",
+                "Id": f"cmq_{re.sub(r'[^a-zA-Z0-9]', '', metric_name)}",
                 "MetricStat": {
                     "Metric": {
                         "Namespace": namespace,
