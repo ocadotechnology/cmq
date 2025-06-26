@@ -38,6 +38,7 @@ nav:
       - S3: 'resource/s3.md'
       - S3 Object: 'resource/s3_object.md'
       - SecretsManager Secret: 'resource/secret.md'
+      - Security Group: 'resource/security_group.md'
       - SNS: 'resource/sns.md'
       - SQS: 'resource/sqs.md'
       - User: 'resource/user.md'
