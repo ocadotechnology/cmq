@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v0.8.0 (2025-06-26)
+
+### Features
+
+- #35 Add EC2 security group resource ([#36](https://github.com/ocadotechnology/cmq/pull/36),
+  [`0789a3c`](https://github.com/ocadotechnology/cmq/commit/0789a3ce086527f145869f64e1ed138ed7c49c9d))
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.7.1 (2025-06-25)
 
 ### Bug Fixes
