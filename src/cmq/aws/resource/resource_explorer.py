@@ -22,5 +22,5 @@ class resource_explorer(AWSResource):
         super().__init__(parent)
         self._service = "resource-explorer-2"
         self._resource = "resource-explorer"
-        self._list_function = "search"
+        self._list_function = "list_resources"
         self._list_key = "Resources"
