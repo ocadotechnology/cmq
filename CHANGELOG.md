@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v0.8.1 (2025-07-24)
+
+### Bug Fixes
+
+- #37 Use list_resources as resource explorer function
+  ([#38](https://github.com/ocadotechnology/cmq/pull/38),
+  [`44cb950`](https://github.com/ocadotechnology/cmq/commit/44cb950ff6fc27c7c0ddf340391c3ace417d2a01))
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.8.0 (2025-06-26)
 
 ### Features
