@@ -1,5 +1,6 @@
 from typing import Any
 from cmq.aws.aws import AWSResource
+from cmq.aws.resource.rds_parameter import rds_parameter
 
 
 class rds_parameter_group(AWSResource):
@@ -19,6 +20,9 @@ class rds_parameter_group(AWSResource):
         if 'rds_rds' in context:
             parameters["DBParameterGroupName"] = context["rds_rds"]["DBInstanceIdentifier"]
         return parameters
+
+    def parameter(self, *args, **kwargs) -> AWSResource:
+        return rds_parameter(self)(*args, **kwargs)
 
     def _get_tag_resource_identifier(self, context: dict[str, Any], resource: dict[str, Any]) -> str:
         return f"arn:aws:rds:{context['aws_region']}:{context['aws_account']}:pg:{resource['DBParameterGroupName']}"
