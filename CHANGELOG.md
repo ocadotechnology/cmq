@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v0.9.0 (2025-08-18)
+
+### Features
+
+- #39 Add RDS parameter value resource ([#40](https://github.com/ocadotechnology/cmq/pull/40),
+  [`2baece3`](https://github.com/ocadotechnology/cmq/commit/2baece348d9da09dd57784d93e239731c5053525))
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.8.1 (2025-07-24)
 
 ### Bug Fixes
