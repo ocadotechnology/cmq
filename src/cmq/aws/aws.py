@@ -225,7 +225,10 @@ class MetricResourceInterface:
             list: List of metric data results.
         """
         client = self.get_client(context, "cloudwatch")
-        dimensions = {self._metric_dimension_name: context[f"{self._desc}"][self._metric_dimension_resource_key]}
+        dimensions = kwargs.pop("dimensions", {})
+        dimensions[self._metric_dimension_name] = context[f"{self._desc}"][self._metric_dimension_resource_key]
+        print(dimensions)
+
         parameters = self._format_parameters(
             namespace=self._metric_namespace,
             dimensions=dimensions,
@@ -277,7 +280,8 @@ class MetricResourceInterface:
             for metric in metrics:
                 timestamps = metric["Timestamps"]
                 values = [value/unit_factor for value in metric["Values"]]
-                plt.plot(timestamps, values, label=metric[self._metric_dimension_resource_key])
+                label = metric.get(self._metric_dimension_name) or metric.get(self._metric_dimension_resource_key) or "Metric"
+                plt.plot(timestamps, values, label=label)
         plt.title(f"{self._resource} {kwargs['statistic']} {kwargs['metric_name']}")
         plt.legend(loc='best')
         plt.show()
