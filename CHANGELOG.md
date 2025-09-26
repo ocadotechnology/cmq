@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v0.9.1 (2025-09-26)
+
+### Bug Fixes
+
+- #41 Fix label & dimensions ([#42](https://github.com/ocadotechnology/cmq/pull/42),
+  [`2934249`](https://github.com/ocadotechnology/cmq/commit/2934249e6ab6044b763107d18d15c2556c73ef50))
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.9.0 (2025-08-18)
 
 ### Features
