@@ -11,6 +11,10 @@ class log(AWSResource):
         self._resource = "log-group"
         self._list_function = "describe_log_groups"
 
+        self._tag_function = "list_tags_for_resource"
+        self._tag_function_key = "resourceArn"
+        self._tag_resource_key = "logGroupArn"
+
     @property
     def stream(self) -> log_stream:
         return log_stream(self)
