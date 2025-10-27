@@ -22,3 +22,9 @@ class log(AWSResource):
     @property
     def event(self, **kwargs) -> log_event:
         return log_event(self).__call__(**kwargs)
+
+    def _get_tag_from_result(self, result) -> list:
+        return result.get("tags", {})
+
+    def _format_tags(self, tags) -> dict:
+        return {"Tags": tags}
