@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v0.10.0 (2025-10-27)
+
+### Features
+
+- #43 Add LogGroup tags ([#44](https://github.com/ocadotechnology/cmq/pull/44),
+  [`427dc79`](https://github.com/ocadotechnology/cmq/commit/427dc7903507ef65b986e188a39273a4a8ee91f5))
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.9.1 (2025-09-26)
 
 ### Bug Fixes
