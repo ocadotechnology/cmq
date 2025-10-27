@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v0.10.1 (2025-10-27)
+
+### Bug Fixes
+
+- #43 Fix tag result ([#45](https://github.com/ocadotechnology/cmq/pull/45),
+  [`c63583b`](https://github.com/ocadotechnology/cmq/commit/c63583b2c4bdd0f2b3c82d9e7e771447559def43))
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.10.0 (2025-10-27)
 
 ### Features
