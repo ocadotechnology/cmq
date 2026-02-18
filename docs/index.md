@@ -115,6 +115,7 @@ Currently, the supported resources are:
 * S3 objects (experimental)
 * SecretsManager secrets
 * SNS topics
+* SNS subscriptions
 * SQS queues
 * IAM users
 * IAM user keys
