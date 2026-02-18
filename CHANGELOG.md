@@ -1,6 +1,22 @@
 # CHANGELOG
 
 
+## v0.11.0 (2026-02-18)
+
+### Features
+
+- #46 Add SNS Subscription ([#47](https://github.com/ocadotechnology/cmq/pull/47),
+  [`79353c5`](https://github.com/ocadotechnology/cmq/commit/79353c556f2d53c0d70293c266e691924285a830))
+
+* feat: #46 Add SNS Subscription
+
+* fix: Remove print
+
+---------
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.10.1 (2025-10-27)
 
 ### Bug Fixes
