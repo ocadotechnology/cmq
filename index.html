@@ -1,0 +1,2369 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="contribute/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>cmq</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cloud-multi-query" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="cmq" class="md-header__button md-logo" aria-label="cmq" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            cmq
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ocadotechnology/cmq" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="cmq" class="md-nav__button md-logo" aria-label="cmq" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    cmq
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ocadotechnology/cmq" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting accounts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-verbose-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enable verbose output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtering accounts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listing-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing resources
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Listing resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-a-list-of-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting a list of resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-resources-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring the resources attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-resources-to-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping resources to accounts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listing-resources-in-all-enabled-regions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing resources in all enabled regions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listing-resources-in-csv-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing resources in CSV format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-resources-in-the-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtering resources in the request
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limiting-resources-in-the-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limiting resources in the request
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-resources-in-the-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtering resources in the response
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick filters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transform-of-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transform of values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculate-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calculate fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting tags
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting metrics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plot-the-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plot the metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribute
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resource overview
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Resource overview
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sessions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sessions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="session/profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Resources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/address/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Address
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/alarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Alarm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/cloudformation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CloudFormation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/cloudtrail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CloudTrail
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/dynamodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DynamoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/elasticache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Elasticache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/elasticache_parameter_group/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Elasticache Parameter Group
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/elasticache_subnet_group/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Elasticache Subnet Group
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/function/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Function
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/keyspace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyspace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/keyspace_table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyspace Table
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/kinesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kinesis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/kms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KMS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/kms_alias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KMS Alias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Log
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/log_stream/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Log Stream
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/log_event/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Log Event
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/metric/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metric
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/rds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RDS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/rds_parameter_group/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RDS Parameter Group
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/region/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Region
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/resource_explorer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resource Explorer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/resource_group/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resource Group
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/route53/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Route53
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/s3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/s3_object/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S3 Object
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/secret/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SecretsManager Secret
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/security_group/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Group
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/sns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SNS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/sns_subscription/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SNS Subscription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/sqs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/user_key/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Key
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/role/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Role
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/route53/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Route53
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="resource/vpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting accounts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-verbose-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enable verbose output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtering accounts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listing-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing resources
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Listing resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-a-list-of-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting a list of resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-resources-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring the resources attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-resources-to-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping resources to accounts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listing-resources-in-all-enabled-regions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing resources in all enabled regions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listing-resources-in-csv-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listing resources in CSV format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-resources-in-the-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtering resources in the request
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limiting-resources-in-the-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limiting resources in the request
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-resources-in-the-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtering resources in the response
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick filters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transform-of-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transform of values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculate-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calculate fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting tags
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting metrics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plot-the-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plot the metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<div><h1 id="cloud-multi-query">Cloud Multi Query</h1>
+<p>Cloud Multi Query (CMQ) is a Python library &amp; CLI tool that allows you to run the same query across multiple cloud accounts in parallel, making it easy to gather insights and manage multi-account environments efficiently.</p>
+<p>So far, CMQ only supports AWS cloud accounts. However, the plugable structure of CMQ allows for the creation of new session and resource types to include other cloud providers.</p>
+<h2 id="requirements">Requirements</h2>
+<ol>
+<li>AWS Config profiles created for each account</li>
+</ol>
+<h2 id="setup">Setup</h2>
+<p>Install the package:</p>
+<pre><code class="language-bash">pip install cmq
+</code></pre>
+<h2 id="basic-usage">Basic usage</h2>
+<h3 id="introduction">Introduction</h3>
+<p><code>cmq</code> uses resource chain calls to retreive information from AWS Accounts. The format is as follows:</p>
+<pre><code class="language-bash"> profile().rds().parameter_group().list()
+|---------|-----------------------|------|
+  session      resource chain      action
+</code></pre>
+<p>The first object is always a <code>session</code> class. This class is the responsible to configure a <code>boto3</code> session object for the objects in the resource chain.</p>
+<p>The resource chain is an optional ordered list of resources calls. For example, in the resource chain above we get all the RDS resources and for each of the them, we get the RDS parameter groups. The operations defined in the resource chain are executed in parallel for each account retrieved by the session object.</p>
+<p>Both <code>session</code> and <code>resource chain</code> support additional calls to filter/manage the results. These operation are executed in order, so filtering resources in the request is more efficient than filtering the results in the response.</p>
+<p>Finally, the last call in the chain is the <code>action</code> and defines what do we want to do with the results.
+There are two basic actions: <code>list</code> and <code>dict</code>, which returns the results using different types.
+Other resources support more actions and they are described in the resource class.</p>
+<p>Let's see some examples.</p>
+<h3 id="getting-accounts">Getting accounts</h3>
+<p>We can start by getting the list of accounts (profiles) defined in your local configuration:</p>
+<pre><code class="language-python">from cmq.aws.session.profile import profile
+profile().list()
+</code></pre>
+<p>As you can see, the <code>resource chain</code> is empty in this example (it's an optional part of the chain).</p>
+<p>CMQ also supports a CLI interface to run queries.</p>
+<pre><code class="language-bash">cmq 'profile().rds().list()'
+</code></pre>
+<h3 id="enable-verbose-output">Enable verbose output</h3>
+<p>We can export the environment variable <code>CMQ_VERBOSE_OUTPUT=true</code> to show the progress of the query.</p>
+<pre><code class="language-bash">&gt; cmq 'profile().elasticache().list()'
+ 100.00% :::::::::::::::::::::::::::::::::::::::: |        1 /        1 |:  account-a         elasticache
+ 100.00% :::::::::::::::::::::::::::::::::::::::: |        1 /        1 |:  account-b         elasticache
+ 100.00% :::::::::::::::::::::::::::::::::::::::: |        1 /        1 |:  account-c         elasticache
+ 100.00% :::::::::::::::::::::::::::::::::::::::: |        1 /        1 |:  account-d         elasticache
+ 100.00% :::::::::::::::::::::::::::::::::::::::: |        1 /        1 |:  account-e         elasticache
+</code></pre>
+<p>Using the <code>--verbose</code> flag in the CLI produce the same result.</p>
+<h3 id="filtering-accounts">Filtering accounts</h3>
+<p>We can also apply some filters in the request, so not all the accounts are processed. In the case of the <code>profile</code> session class, we can filter only by name:</p>
+<p>Filter all profiles starting with <code>test</code>:</p>
+<pre><code class="language-python">profile(name="test").list()
+</code></pre>
+<h2 id="listing-resources">Listing resources</h2>
+<p>Now that we know how to get accounts, let's get some AWS resources.</p>
+<h3 id="supported-resources">Supported resources</h3>
+<p>Currently, the supported resources are:</p>
+<ul>
+<li>Elastic IPs (address)</li>
+<li>CloudWatch alarms</li>
+<li>CloudWatch metrics</li>
+<li>CloudWatch logs</li>
+<li>CloudTrail events</li>
+<li>DynamoDB tables</li>
+<li>Elasticache clusters</li>
+<li>Elasticache replication groups</li>
+<li>Elasticache parameter groups</li>
+<li>Elasticache subnet groups</li>
+<li>Functions (lambdas)</li>
+<li>Keyspaces</li>
+<li>Keyspaces tables</li>
+<li>Kinesis streams</li>
+<li>KMS keys</li>
+<li>RDS databases</li>
+<li>RDS parameter groups</li>
+<li>Regions</li>
+<li>Resource Explorer</li>
+<li>Resource groups</li>
+<li>Route53 Hosted Zones</li>
+<li>S3 buckets</li>
+<li>S3 objects (experimental)</li>
+<li>SecretsManager secrets</li>
+<li>SNS topics</li>
+<li>SNS subscriptions</li>
+<li>SQS queues</li>
+<li>IAM users</li>
+<li>IAM user keys</li>
+<li>IAM roles</li>
+<li>VPC</li>
+</ul>
+<h3 id="getting-a-list-of-resources">Getting a list of resources</h3>
+<p>For example, let's get the list of <code>sns</code> topics in <code>account-c</code> account:</p>
+<pre><code class="language-python">profile(name="account-c").sns().list()
+</code></pre>
+<p>If we remove the filter name, we will get all the <code>sns</code> topics in all accounts:</p>
+<pre><code class="language-python">profile().sns().list()
+</code></pre>
+<h3 id="configuring-the-resources-attributes">Configuring the resources attributes</h3>
+<p>We can use <code>attr</code> to reduce the number of fields returned by the AWS resources. For example, if we are only interested in the <code>FunctionName</code> of the <code>lambda</code> functions:</p>
+<pre><code class="language-python">profile().function().attr("FunctionName").list()
+</code></pre>
+<h3 id="mapping-resources-to-accounts">Mapping resources to accounts</h3>
+<p>Sometimes it's useful to have the list of resources grouped by the account name. We can use <code>dict()</code> action in this case:</p>
+<pre><code class="language-python">profile().sns().dict()
+</code></pre>
+<h3 id="listing-resources-in-all-enabled-regions">Listing resources in all enabled regions</h3>
+<p>To list resources in all enabled regions, you can use the <code>region</code> resource. This will retrieve regions available in each account and then list the resources in each region.</p>
+<p>For example, to list all <code>sns</code> topics in all regions for each account, you can do the following:</p>
+<pre><code class="language-python">profile().region().sns().list()
+</code></pre>
+<p>You can also limit the regions to a specific list using the <code>regions</code> parameter:</p>
+<pre><code class="language-python">profile().region(regions=["us-east-1", "eu-west-1"]).sns().list()
+</code></pre>
+<h3 id="listing-resources-in-csv-format">Listing resources in CSV format</h3>
+<p>Lists and dictionaries are ideal when you are going to process the data programatically. In the other hand, if you want to take a look at the data manually or visualize it in a tool like a spreadsheet, it's better to use a CSV format.</p>
+<p>For these cases, you can use the <code>csv()</code> action. The action will also include a <code>session</code> keyword with the name of the session used to get the resource.</p>
+<pre><code class="language-bash">cmq --verbose 'profile().elasticache().csv()' --output elasticache.csv
+</code></pre>
+<h3 id="filtering-resources-in-the-request">Filtering resources in the request</h3>
+<p>Similarly to the <code>profile</code> session class, you can filter the resources while doing the request. In this case, the parameters specified in the filter will be used by the <code>boto3</code> function that lists that specific resource. Each resource class uses a different <code>boto3</code> function to list the resources.</p>
+<p>For example, for the <code>sqs</code> resource the function <code>list_queues</code> is used. So we can use <code>QueueNamePrefix</code> to filter some queues before processing them with <code>cmq</code>:</p>
+<pre><code class="language-python">profile().sqs(QueueNamePrefix="webserver-").list()
+</code></pre>
+<h3 id="limiting-resources-in-the-request">Limiting resources in the request</h3>
+<p>Sometimes the volume of data returned by AWS is overwhelming and you'd prefer to get only a maximum amount of resources. For these cases you can use the <code>limit</code> function:</p>
+<pre><code class="language-python">profile().sqs().limit(10).list()
+</code></pre>
+<p>This query will return the first 10 queues for each account. This functionality only works with paginated resources.</p>
+<h3 id="filtering-resources-in-the-response">Filtering resources in the response</h3>
+<p>Many times, the session/resource object you want to list does not support filtering by a specific attribute.
+In this case, you can use the <code>filter</code> function to reduce the number of resources that are processed in the response and focus on the resources that you are interested in.</p>
+<p>The function <code>filter</code> receives a single function as argument and it should return <code>True</code> if you want to keep the resource or <code>False</code> if we want to get rid of it.</p>
+<p>For example, this will retrieve all the queues that contains <code>backup</code> in all accounts:</p>
+<pre><code class="language-python">profile().sqs().filter(lambda r: "backup" in r["resource"]).list()
+</code></pre>
+<p>You can call multiple times to the <code>filter</code> function, and all the filters will be applied to the resources in the order specified.</p>
+<h3 id="quick-filters">Quick filters</h3>
+<p>There is a list of quick filters already defined for convenience.</p>
+<ul>
+<li>eq</li>
+<li>ne</li>
+<li>in_</li>
+<li>contains</li>
+<li>not_contains</li>
+<li>starts_with</li>
+<li>ends_with</li>
+<li>gt</li>
+<li>lt</li>
+</ul>
+<p>All the functions have two arguments: <code>(key, value)</code>. <code>key</code>, is the name of the key that you want to evaluate
+as part of the filter and <code>value</code> the value you'll use to perform the comparison.</p>
+<p>The <code>key</code> argument support dict/list path (<a href="https://pypi.org/project/python-benedict/">python-benedict</a>).</p>
+<p>For example, let's filter <code>elasticache</code> resources using the default <code>default.redis</code> parameter group names:</p>
+<pre><code class="language-python">profile().elasticache().starts_with("CacheParameterGroup.CacheParameterGroupName", "default.redis").list()
+</code></pre>
+<h3 id="transform-of-values">Transform of values</h3>
+<p>Sometimes the values in the response from AWS does not have the right type or format to work with them. With
+<code>cmq</code> you can easily tranform fields into new types. A good example of this are serialised <code>json</code> objects.</p>
+<pre><code class="language-python">import json
+profile().cloudtrail().transform("CloudTrailEvent", json.loads).list()
+</code></pre>
+<p>We are instructing <code>cmq</code> to transform the field <code>CloudTrailEvent</code> (that we know contains a json
+serialisable object) in all the resources using <code>json.loads</code> method. This is useful if you want to process or filter the information later on.</p>
+<h3 id="calculate-fields">Calculate fields</h3>
+<p>Similarly to the transformed values, you can also create new attributes (or overwrite existing ones)
+that will be computed using the resource details.</p>
+<p>For example, this list KMS keys and will add a new field in the resource root dictionary:</p>
+<pre><code class="language-python">profile().kms().describe().calculate("CreationDate", lambda x: x["Describe"]["KeyMetadata"]["CreationDate"]).attr("KeyId", "CreationDate").list()
+</code></pre>
+<h2 id="getting-tags">Getting tags</h2>
+<p>Many resources in AWS support tags, but usually the tags are not loaded as part of the resource definition. You can use the <code>tags()</code> function to instruct <code>cmq</code> to load the tags as part of the retrieval. If the resource does not support tags, the call to this function will be ignored.</p>
+<p>The tags will be loaded as part of the resource definition, in the <code>Tags</code> key.</p>
+<p>For example, let's get all sqs including their tags:</p>
+<pre><code class="language-python">profile().sqs().tags().list()
+</code></pre>
+<p>We can not use <code>tags</code> to filter resources in the request, but we can use it to filter resources in the response
+with the <code>filter</code> function or the quick filters. For example, filter queues assigned to <code>alpha</code> team:</p>
+<pre><code class="language-python">profile().sqs().tags().filter(lambda r: r.get("Tags", {}).get("teamId") == "alpha").list()
+</code></pre>
+<p>You can also use quick filters to get the same results:</p>
+<pre><code class="language-python">profile().sqs().tags().eq("Tags.teamId", "alpha").list()
+</code></pre>
+<h2 id="getting-metrics">Getting metrics</h2>
+<p>Many resources provisioned in AWS publish metrics about their usage to <code>CloudWatch</code>. <code>cmq</code> offers a <code>metric</code> resource that
+you can use get this information, but it's also possible to get metrics from other resource types. This is more
+convinient in most of the cases. Similarly to the tags, not all the resources support  the <code>metric</code> function.</p>
+<p>These are the parameters and their default values:</p>
+<ul>
+<li><strong>statistic</strong>: Name of the staticstic to use (e.g.:Minimum, Average, Maximum...)</li>
+<li><strong>metric_name</strong>: Name of the metric (e.g.: CPUUtilization)</li>
+<li><strong>period</strong>: Metric interval. <strong>Default</strong>: 1h</li>
+<li><strong>unit</strong>: Metric unit. <strong>Default</strong>: "Count"</li>
+<li><strong>start_time</strong>: Time of the first metric. <strong>Default</strong>: 90 days ago</li>
+<li><strong>end_time</strong>: Time of the last metric. <strong>Default</strong>: current date</li>
+</ul>
+<p>Let's take a look at some examples.</p>
+<p>Get maximum <code>CPUUtilization</code> of <code>webserver</code> databases:</p>
+<pre><code class="language-python">profile().rds().tags().eq("Tags.appId", "webserver").metric(statistic="Maximum", metric_name="CPUUtilization", unit="Percent")
+</code></pre>
+<p>Number of <code>Invocations</code> of all lambda functions in all accounts:</p>
+<pre><code class="language-python">profile().function().metric(statistic="Sum", metric_name="Invocations")
+</code></pre>
+<h3 id="plot-the-metrics">Plot the metrics</h3>
+<p>Looking at the raw metric data is not always easy so <code>cmq</code> also offers a <code>plot</code> function that will
+create a graph for visualization. <code>plot</code> function uses the same parameters as the <code>metric</code> function and
+adds a new one to manage the scale of the units:</p>
+<ul>
+<li><strong>unit_factor</strong>: division factor. <strong>Default</strong>: 1. (e.g.: 1024 to show kilobytes instead of bytes)</li>
+</ul>
+<p>For example, let's get the number of invocations of <code>send_email</code> lambda in all account:</p>
+<pre><code class="language-python">profile().function().contains("FunctionName", "send_email").plot(statistic="Sum", metric_name="Invocations")
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
