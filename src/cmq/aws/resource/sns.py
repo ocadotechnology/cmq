@@ -1,5 +1,6 @@
 from typing import Any
 from cmq.aws.aws import AWSResource
+from cmq.aws.resource.sns_subscription import sns_subscription
 
 
 class sns(AWSResource):
@@ -19,3 +20,6 @@ class sns(AWSResource):
 
     def _get_tag_resource_identifier(self, context: dict[str, Any], resource: dict[str, Any]) -> str:
         return resource["TopicArn"]
+
+    def subscription(self, *args, **kwargs) -> AWSResource:
+        return sns_subscription(self)(*args, **kwargs)

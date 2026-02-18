@@ -40,6 +40,7 @@ nav:
       - SecretsManager Secret: 'resource/secret.md'
       - Security Group: 'resource/security_group.md'
       - SNS: 'resource/sns.md'
+      - SNS Subscription: 'resource/sns_subscription.md'
       - SQS: 'resource/sqs.md'
       - User: 'resource/user.md'
       - User Key: 'resource/user_key.md'
