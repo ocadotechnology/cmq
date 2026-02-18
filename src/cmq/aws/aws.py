@@ -227,7 +227,6 @@ class MetricResourceInterface:
         client = self.get_client(context, "cloudwatch")
         dimensions = kwargs.pop("dimensions", {})
         dimensions[self._metric_dimension_name] = context[f"{self._desc}"][self._metric_dimension_resource_key]
-        print(dimensions)
 
         parameters = self._format_parameters(
             namespace=self._metric_namespace,
