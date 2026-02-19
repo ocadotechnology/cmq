@@ -22,6 +22,12 @@ class sqs(AWSResource):
         self._metric_dimension_name = "QueueName"
         self._metric_dimension_resource_key = "resource"
 
+    def get_parameters(self, context: dict) -> dict:
+        parameters = self._list_parameters.copy()
+        if 'MaxResults' not in parameters:
+            parameters['MaxResults'] = 1000
+        return parameters
+
     def _get_tag_resource_identifier(self, context: dict[str, Any], resource: dict[str, Any]) -> str:
         return resource["resource"]
 
