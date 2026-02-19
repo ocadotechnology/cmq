@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v0.11.1 (2026-02-19)
+
+### Bug Fixes
+
+- #48 Set by default MaxResults=1000 for SQS resource
+  ([#49](https://github.com/ocadotechnology/cmq/pull/49),
+  [`5084ced`](https://github.com/ocadotechnology/cmq/commit/5084cedcf497fcaa0d8f8ca729396faac68bb816))
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.11.0 (2026-02-18)
 
 ### Features
