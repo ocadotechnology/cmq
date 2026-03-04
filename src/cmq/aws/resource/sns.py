@@ -11,6 +11,10 @@ class sns(AWSResource):
         self._resource = "sns"
         self._list_function = "list_topics"
 
+        self._describe_function = "get_topic_attributes"
+        self._describe_function_key = "TopicArn"
+        self._describe_resource_key = "TopicArn"
+
         self._tag_function = "list_tags_for_resource"
         self._tag_function_key = "ResourceArn"
 
