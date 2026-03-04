@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v0.12.0 (2026-03-04)
+
+### Features
+
+- Describe for SNS resource ([#51](https://github.com/ocadotechnology/cmq/pull/51),
+  [`62d2385`](https://github.com/ocadotechnology/cmq/commit/62d23851bb47cbdaefa6068511bead2549382e8a))
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.11.1 (2026-02-19)
 
 ### Bug Fixes
