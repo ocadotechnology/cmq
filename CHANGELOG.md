@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v0.13.0 (2026-06-16)
+
+### Features
+
+- Add support for Backups restore plan and jobs
+  ([#53](https://github.com/ocadotechnology/cmq/pull/53),
+  [`a929792`](https://github.com/ocadotechnology/cmq/commit/a9297925577ee90bb3eb4f6930c11512bfa7de2b))
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.12.0 (2026-03-04)
 
 ### Features
