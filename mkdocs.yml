@@ -35,6 +35,8 @@ nav:
       - Resource Explorer: 'resource/resource_explorer.md'
       - Resource Group: 'resource/resource_group.md'
       - Route53: 'resource/route53.md'
+      - Restore Plan: 'resource/restore_plan.md'
+      - Restore Plan Job: 'resource/restore_plan_job.md'
       - S3: 'resource/s3.md'
       - S3 Object: 'resource/s3_object.md'
       - SecretsManager Secret: 'resource/secret.md'
