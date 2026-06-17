@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v0.14.0 (2026-06-17)
+
+### Features
+
+- Add Describe to Backup Restore Plan ([#54](https://github.com/ocadotechnology/cmq/pull/54),
+  [`4e31daa`](https://github.com/ocadotechnology/cmq/commit/4e31daac44988fb41afd103b04ae39b2edb913fd))
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.13.0 (2026-06-16)
 
 ### Features
