@@ -12,6 +12,9 @@ class restore_plan(AWSResource):
         self._resource = "restore_plan"
         self._list_function = "list_restore_testing_plans"
 
+        self._describe_function = "get_restore_testing_plan"
+        self._describe_function_key = "RestoreTestingPlanName"
+        self._describe_resource_key = "RestoreTestingPlanName"
 
     def job(self) -> AWSResource:
         return restore_plan_job(self)
