@@ -1,6 +1,6 @@
 [project]
 name = "cmq"
-version = "0.14.0"
+version = "0.15.0"
 license = "Apache-2.0"
 description = "Cloud Multi Query is a library & CLI tool that allows you to run queries across multiple cloud accounts in parallel."
 authors = [
@@ -66,6 +66,7 @@ cmq = "cmq.cli:main"
 
 
 
+
 [tool.poetry.dependencies]
 python = "^3.10"
 requests = "^2.31.0"
@@ -118,6 +119,7 @@ version_variables = [
 ]
 version_toml = ["pyproject.toml:project.version"]
 branch = "main"
+
 
 
 [build-system]

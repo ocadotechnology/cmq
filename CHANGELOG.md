@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v0.15.0 (2026-07-08)
+
+### Features
+
+- Add sort key for list and csv actions ([#56](https://github.com/ocadotechnology/cmq/pull/56),
+  [`bd7b470`](https://github.com/ocadotechnology/cmq/commit/bd7b470e5d4a1f6f8b8bebb30d99a36b54b1d8d6))
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.14.0 (2026-06-17)
 
 ### Features
