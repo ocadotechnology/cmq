@@ -365,15 +365,21 @@ class Resource(PagedResourceInterface, ResourcePlugin):
     def enable_console(self) -> bool:
         return str(os.getenv("CMQ_VERBOSE_OUTPUT", "false")).lower() == "true"
 
-    def list(self) -> list:
+    def list(self, sort: str = None) -> list:
         """
         Retrieves a list of resources based on the applied filters.
+
+        Args:
+            sort (str, optional): The key to sort the results by. Supports python-benedict
+                dict/list paths (e.g. "Endpoint.Address"). Defaults to None (no sorting).
 
         Returns:
             list: A list of resource objects.
         """
         results: list = []
         self._perform_action(partial(self._list, results))
+        if sort:
+            results = self._sort_resources(results, sort)
         return results
 
     def dict(self) -> dict:
@@ -387,19 +393,21 @@ class Resource(PagedResourceInterface, ResourcePlugin):
         self._perform_action(partial(self._dict, results))
         return results
 
-    def csv(self, flat: bool=False) -> str:
+    def csv(self, flat: bool=False, sort: str = None) -> str:
         """
         Retrieves a list of resources based on the applied filters and returns them in CSV format.
 
         Args:
             flat (bool, optional): Specifies whether the dictionaries should be flattened or not. Defaults to False.
+            sort (str, optional): The key to sort the results by. Supports python-benedict
+                dict/list paths (e.g. "Endpoint.Address"). Defaults to None (no sorting).
 
         Returns:
             str: List of resources in CSV format.
         """
         results: dict = {}
         self._perform_action(partial(self._dict, results))
-        return self._to_csv(results, flat)
+        return self._to_csv(results, flat, sort)
 
     def do(self, action: callable) -> None:
         """
@@ -416,29 +424,50 @@ class Resource(PagedResourceInterface, ResourcePlugin):
     def _dict(self, results, context) -> None:
         raise NotImplementedError
 
-    def _to_csv(self, results, flat: bool) -> str:
+    def _to_csv(self, results, flat: bool, sort: str = None) -> str:
         """
         Transform a dictionary of resources into a CSV string in memory
         """
         if not results:
             return ""
 
-        # Get all the keys from the dictionaries
+        # Get all the keys from the dictionaries and build the flat list of rows
         keys = set({'session'})
+        rows = []
         for session, resources in results.items():
             if flat:
                 resources = self._flatten(resources)
                 results[session] = resources
             keys = self._get_keys_from_dicts(keys, resources)
+            rows.extend({"session": session, **r} for r in resources)
         keys = sorted(keys)
+
+        if sort:
+            rows = self._sort_resources(rows, sort)
 
         # Write the CSV file into memory
         with io.StringIO() as output_file:
             dict_writer = csv.DictWriter(output_file, keys)
             dict_writer.writeheader()
-            for session, resources in results.items():
-                dict_writer.writerows(map(lambda r: {"session": session, **r}, resources))
+            dict_writer.writerows(rows)
             return output_file.getvalue()
+
+    def _sort_resources(self, resources: list, sort: str) -> list:
+        """
+        Sorts a list of resources by the given key. Supports python-benedict dict/list
+        paths (e.g. "Endpoint.Address"). Resources missing the key are sorted first.
+
+        Args:
+            resources (list): The list of resources to sort.
+            sort (str): The key to sort by.
+
+        Returns:
+            list: The sorted list of resources.
+        """
+        def sort_key(resource):
+            value = self._safe_key(resource, sort)
+            return (value is None, value)
+        return sorted(resources, key=sort_key)
 
     def _get_keys_from_dicts(self, keys, results) -> set:
         for resource in results:
