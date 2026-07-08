@@ -1,12 +1,17 @@
 import boto3
+import csv
+import io
 
 from moto import mock_aws
 from mock_resources import MockSession
 
 
-def create_fake_kinesis(region, name):
+def create_fake_kinesis(region, name, team=None):
     client = boto3.session.Session(region_name=region).client("kinesis")
     client.create_stream(StreamName=name, ShardCount=1)
+    if team:
+        stream_arn = client.describe_stream(StreamName=name)["StreamDescription"]["StreamARN"]
+        client.add_tags_to_stream(StreamARN=stream_arn, Tags={"Team": team})
 
 
 def create_fake_dynamodb(region, name, team):
@@ -89,6 +94,49 @@ def test_resources_filter():
     assert isinstance(resources, list)
     assert len(resources) == 1
     assert resources[0]["StreamName"] == "dev-stream"
+
+
+@mock_aws()
+def test_resources_sort():
+
+    create_fake_kinesis("us-east-1", "dev-stream")
+    create_fake_kinesis("eu-west-1", "sit-stream")
+    create_fake_kinesis("ca-central-1", "prd-stream")
+
+    session = MockSession(None)
+    resources = session().kinesis().list(sort="StreamName")
+
+    assert [r["StreamName"] for r in resources] == ["dev-stream", "prd-stream", "sit-stream"]
+
+
+@mock_aws()
+def test_resources_sort_nested_key():
+
+    create_fake_kinesis("us-east-1", "dev-stream", team="teamC")
+    create_fake_kinesis("eu-west-1", "sit-stream", team="teamA")
+    create_fake_kinesis("ca-central-1", "prd-stream", team="teamB")
+
+    session = MockSession(None)
+    resources = session().kinesis().tags().list(sort="Tags.Team")
+
+    assert [r["Tags"]["Team"] for r in resources] == ["teamA", "teamB", "teamC"]
+
+
+@mock_aws()
+def test_resources_csv_sort():
+
+    create_fake_kinesis("us-east-1", "dev-stream")
+    create_fake_kinesis("eu-west-1", "sit-stream")
+    create_fake_kinesis("ca-central-1", "prd-stream")
+
+    session = MockSession(None)
+    result = session().kinesis().attr("StreamName").csv(sort="StreamName")
+
+    rows = list(csv.reader(io.StringIO(result)))
+    header, data_rows = rows[0], rows[1:]
+
+    assert header == ["StreamName", "session"]
+    assert [row[0] for row in data_rows] == ["dev-stream", "prd-stream", "sit-stream"]
 
 
 @mock_aws()

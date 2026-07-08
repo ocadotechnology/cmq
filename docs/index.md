@@ -177,6 +177,20 @@ For these cases, you can use the `csv()` action. The action will also include a 
 cmq --verbose 'profile().elasticache().csv()' --output elasticache.csv
 ```
 
+### Sorting resources
+
+Both `list()` and `csv()` actions accept a `sort` argument with the name of the field to sort the results by. The field supports dict/list paths ([python-benedict](https://pypi.org/project/python-benedict/)), so you can sort by nested attributes too.
+
+```python
+profile().rds().list(sort="DBInstanceIdentifier")
+```
+
+```python
+profile().rds().csv(sort="Endpoint.Address")
+```
+
+Resources missing the sort field are placed first.
+
 ### Filtering resources in the request
 
 Similarly to the `profile` session class, you can filter the resources while doing the request. In this case, the parameters specified in the filter will be used by the `boto3` function that lists that specific resource. Each resource class uses a different `boto3` function to list the resources.
