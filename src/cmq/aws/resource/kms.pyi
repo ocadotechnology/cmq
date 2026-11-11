@@ -1,0 +1,6 @@
+from cmq.aws.aws import AWSResource as AWSResource
+from cmq.aws.resource.kms_alias import kms_alias as kms_alias
+
+class kms(AWSResource):
+    def __init__(self, parent=None) -> None: ...
+    def aliases(self) -> AWSResource: ...

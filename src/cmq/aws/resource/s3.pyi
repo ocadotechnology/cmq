@@ -1,0 +1,6 @@
+from cmq.aws.aws import AWSResource as AWSResource
+from cmq.aws.resource.s3_object import s3_object as s3_object
+
+class s3(AWSResource):
+    def __init__(self, parent=None) -> None: ...
+    def objects(self, **kwargs) -> AWSResource: ...

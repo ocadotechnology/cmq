@@ -1,0 +1,6 @@
+from cmq.aws.aws import AWSResource as AWSResource
+from cmq.aws.resource.sns_subscription import sns_subscription as sns_subscription
+
+class sns(AWSResource):
+    def __init__(self, parent=None) -> None: ...
+    def subscription(self, *args, **kwargs) -> AWSResource: ...

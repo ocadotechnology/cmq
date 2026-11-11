@@ -1,0 +1,6 @@
+from cmq.aws.aws import AWSResource as AWSResource
+from cmq.aws.resource.elasticache_parameter_group import elasticache_parameter_group as elasticache_parameter_group
+
+class elasticache(AWSResource):
+    def __init__(self, parent=None) -> None: ...
+    def parameter_group(self) -> AWSResource: ...
