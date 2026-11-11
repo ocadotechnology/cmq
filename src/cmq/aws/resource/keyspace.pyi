@@ -1,0 +1,6 @@
+from cmq.aws.aws import AWSResource as AWSResource
+from cmq.aws.resource.keyspace_table import keyspace_table as keyspace_table
+
+class keyspace(AWSResource):
+    def __init__(self, parent=None) -> None: ...
+    def table(self) -> AWSResource: ...

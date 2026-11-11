@@ -1,0 +1,6 @@
+from cmq.aws.aws import AWSResource as AWSResource
+from cmq.aws.resource.restore_plan_job import restore_plan_job as restore_plan_job
+
+class restore_plan(AWSResource):
+    def __init__(self, parent=None) -> None: ...
+    def job(self) -> AWSResource: ...
