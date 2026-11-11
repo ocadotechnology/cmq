@@ -1,6 +1,16 @@
 # CHANGELOG
 
 
+## v0.16.0 (2026-11-11)
+
+### Features
+
+- Add stubs files to package ([#58](https://github.com/ocadotechnology/cmq/pull/58),
+  [`099521b`](https://github.com/ocadotechnology/cmq/commit/099521b353ba9e2d2484a07d55280abef78fb714))
+
+Co-authored-by: Daniel Isla Cruz <daniel.islacruz@ocado.com>
+
+
 ## v0.15.0 (2026-07-08)
 
 ### Features
