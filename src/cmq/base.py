@@ -499,7 +499,7 @@ class Session(Resource, SessionPlugin):
         else:
             return nullcontext()
 
-    def get_sessions() -> list:
+    def get_sessions(self) -> list:
         raise NotImplementedError
 
     def get_session_context(self, resource: dict) -> dict:
